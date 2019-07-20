@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>My Webpage</title>
+</head>
+
+<body>
+
+  <div id="myList">
+  </div>
+  <div>
+    <input type="text" id="name" placeholder="Type Author's Name Here">
+    <input type="text" id="title" placeholder="Type Book's Title Here">
+    <button onclick="displayToScreen()">Set Book Author & Title</button> 
+    <button onclick="removeBook()">Remove Book</button>
+  </div>
+
+  <script>
+    // Objects
+    var book1 = { author: "J.R.R. Tolken", title: "Lord of the Rings"}
+    var book2 = { author: "Charles Dickens", title: "A Tale of Two Cities"}
+    var book3 = { author: "Reid Hoffman", title: "Blitzscaling"}
+    // Array of Objects
+    let books = [book1, book2, book3];
+
+
+    function displayToScreen() {
+      let n = document.getElementById("name").value;
+      let t = document.getElementById("title").value;
+
+      //create new book
+      let newBook = {title: t, author: n}
+
+      books.push(newBook);
+      printAuthList();
+
+      //Clear out text box cell
+      document.getElementById("name").value = "";
+      document.getElementById("title").value = "";
+
+    }
+
+      //delete newBook with onClick
+    function removeBook(){
+      books.pop();
+      printAuthList();
+    }
+
+    function printAuthList(){
+      let auth = document.getElementById("myList");
+      auth.innerHTML = "";
+      for(let i = 0; i < books.length; i++){
+          auth.innerHTML += "<h2>" + books[i].title + "</h2>";
+          auth.innerHTML += "<h4>" + books[i].author + "</h4>";
+      }
+    }
+    printAuthList();
+
+
+
+  </script>
+
+</body>
+
+</html>
