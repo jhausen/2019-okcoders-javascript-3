@@ -44,10 +44,11 @@
 
     }
 
-      //delete newBook with onClick
+      //delete book with onClick
     function removeBook(){
       books.pop();
-      printAuthList();
+      printAuthList();//<-You must call the printed AuthList before you can remove it
+
     }
 
     function printAuthList(){
